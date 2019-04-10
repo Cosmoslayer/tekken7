@@ -12,7 +12,7 @@ $factory->define(App\Character::class, function (Faker $faker) {
         'fighting_style' => $faker->jobTitle,
         'nationality' => $faker->country,
         'background' => $faker->paragraph,
-        'picture' => UploadedFile::fake()->image('test.jpg'),
+        'picture' => UploadedFile::fake()->image('fakeimagetest.jpg'),
         'notes' => $faker->paragraph
     ];
 });

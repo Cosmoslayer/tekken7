@@ -37,7 +37,7 @@ class CharactersTest extends TestCase
             'fighting_style' => $this->faker->jobTitle,
             'nationality' => $this->faker->country,
             'background' => $this->faker->paragraph,
-            'picture' => UploadedFile::fake()->image('test.jpg'),
+            'picture' => UploadedFile::fake()->image('fakeimagetest.jpg'),
             'notes' => $this->faker->paragraph
         ];
 

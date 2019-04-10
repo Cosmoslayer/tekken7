@@ -1,68 +1,77 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-</head>
-<body>
-    <form method="POST" action="/characters" class="container" style="padding-top: 40px" enctype="multipart/form-data">
+@extends('layouts.base')
+
+@section('content')
+    <form method="POST" action="/characters" enctype="multipart/form-data">
         @csrf
+        @if ($errors->any())
+            <div role="alert" class="mb-2">
+                <div class="bg-red text-white font-bold rounded-t px-4 py-2">
+                    Error:
+                </div>
+                @foreach ($errors->all() as $error)
+                    <div class="border border-t-0 border-red-light rounded-b bg-red-lightest px-4 py-3 text-red-dark">
+                        <p>{{ $error }}</p>
+                    </div>
+                @endforeach
+            </div>
+        @endif
 
-        <h1 class="heading is-1">Create a Character</h1>
-
-        <div class="field">
-            <label for="name" class="label">Name: </label>
+        <div class="mb-2">
+            <label for="name" class="font-bold">Name: </label>
 
             <div class="control">
-                <input type="text" class="input" name="name" placeholder="Name">
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" name="name" placeholder="Name" required>
             </div>
         </div>
 
-        <div class="field">
-            <label for="fighting_style" class="label">Fighting Style: </label>
+        <div class="mb-2">
+            <label for="fighting_style" class="font-bold">Fighting Style: </label>
 
             <div class="control">
-                <input type="text" class="input" name="fighting_style" placeholder="Fighting Style">
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" name="fighting_style" placeholder="Fighting Style" required>
             </div>
         </div>
 
-        <div class="field">
-            <label for="nationality" class="label">Nationality: </label>
+        <div class="mb-2">
+            <label for="nationality" class="font-bold">Nationality: </label>
 
             <div class="control">
-                <input type="text" class="input" name="nationality" placeholder="Nationality">
+                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" name="nationality" placeholder="Nationality" required>
             </div>
         </div>
 
-        <div class="field">
-            <label for="background" class="label">Background: </label>
+        <div class="mb-2">
+            <label for="background" class="font-bold">Background: </label>
 
             <div class="control">
-                <textarea name="background" class="textarea"></textarea>
+                <textarea cols="80" rows="10" name="background" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" required></textarea>
             </div>
         </div>
 
-        <div class="field">
-            <label for="picture" class="label">Picture: </label>
+        <div class="mb-2">
+            <label for="picture" class="font-bold">Picture: </label>
 
             <div class="control">
-                <input type="file" class="input" name="picture">
+                <input type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" name="picture" required>
             </div>
         </div>
 
-        <div class="field">
-            <label for="notes" class="label">Notes: </label>
+        <div class="mb-2">
+            <label for="notes" class="font-bold">Notes: </label>
 
             <div class="control">
-                <textarea name="notes" class="textarea"></textarea>
+                <textarea cols="80" rows="10" name="notes" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"></textarea>
             </div>
         </div>
 
-        <div class="field">
+        <div class="mb-2">
             <div class="control">
-                <button type="submit" class="button is-link">Create Character</button>
+                <button type="submit" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full my-2 w-full">
+                    <i class="far fa-plus-square">
+                        Create
+                    </i>
+                </button>
             </div>
         </div>
     </form>
-</body>
-</html>
+@endsection

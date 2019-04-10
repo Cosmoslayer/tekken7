@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+@extends('layouts.base')
+
+@section('content')
     <h1>Characters</h1>
     <ul>
         @forelse ($characters as $character)
@@ -14,5 +11,4 @@
             <li>No characters yet.</li>
         @endforelse
     </ul>
-</body>
-</html>
+@endsection

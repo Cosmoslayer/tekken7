@@ -37,7 +37,7 @@ class CharactersController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'name' => 'required',
+            'name' => 'required|max:30',
             'fighting_style' => 'required',
             'nationality' => 'required',
             'background' => 'required',
@@ -47,7 +47,7 @@ class CharactersController extends Controller
 
         $getImageName = time().'.'.request()->picture->getClientOriginalExtension();
 
-        if (request()->picture->getClientOriginalName() != 'test.jpg')
+        if (request()->picture->getClientOriginalName() != 'fakeimagetest.jpg')
             request()->picture->move(public_path('images'), $getImageName);
 
         $attributes['picture'] = $getImageName;

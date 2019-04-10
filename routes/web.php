@@ -21,6 +21,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/characters', 'CharactersController@index');
 Route::get('/characters/{character}', 'CharactersController@show');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
